@@ -59,6 +59,7 @@ h1 {
 	line-height: 1.2;
 	text-align: center;
 	color: black;
+	font-family: 'Bangers', cursive;
 }
 
 .obsah {
@@ -73,17 +74,17 @@ h1 {
 
 #obrazek {
 	padding: 5px;
-	width: 100%;
-	height: auto;
 	border-radius: 50%;
 	border: 3px dotted var(--cervena);
 }
 
 #moznosti {
-	flex: 1;
+	display: flex;
+	align-items: center;
 }
 
 #odpovedi {
+	flex-basis: 75%;
 	margin: 0;
 	padding: 0;
 	font-size: 24px;
@@ -105,7 +106,6 @@ h1 {
 	cursor: pointer;
 	transform: translateX(-10px);
 }
-
 
 .vysledek {
 	display: none;
