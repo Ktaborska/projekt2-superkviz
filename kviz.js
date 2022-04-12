@@ -1,6 +1,6 @@
 // Nejdříve si vytvoř objekt, který bude držet tvoje super otázky 
 
-const otazky = [
+const otazkyKviz = [
     {
         obrazek:'obrazky/moncicak.jpg',
         otazka: 'CO JE IKONICKÁ HRAČKA Z 80. LET?',
@@ -28,6 +28,7 @@ let indexOtazky = 0;
 
 // Tato funkce se postará o vygenerování otázky
 // Zavoláme ji jednou na začátku a poté vždy po odpovězení
+zobrazOtazku(indexOtazky)
 function zobrazOtazku(indexOtazky) {
     document.querySelector('#poradi').textContent = otazkyKviz[indexOtazky].poradi;
 
