@@ -72,22 +72,24 @@ h1 {
 }
 
 #obrazek {
-	padding: 5px;
 	width: 100%;
-	height: auto;
+	padding: 5px;
 	border-radius: 50%;
 	border: 3px dotted var(--cervena);
+	flex-basis: 25%;
 }
 
 #moznosti {
-	flex: 1;
+	display: flex;
+	align-items: center;
 }
 
 #odpovedi {
-	margin: 0;
+	margin-left: 20px;
 	padding: 0;
 	font-size: 24px;
 	list-style: none;
+	flex-basis: 75%;
 }
 
 #odpovedi li {
