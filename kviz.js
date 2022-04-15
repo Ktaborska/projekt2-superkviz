@@ -25,6 +25,7 @@ const otazkyKviz = [
 
 let indexOtazky = 0;
 let zaznamyOdpovedi = [];
+let spravnaOdpoved = [1, 1, 1];
 
 zobrazKviz(indexOtazky);
 
@@ -32,21 +33,21 @@ function zobrazKviz(indexOtazky) {
 
     if(indexOtazky >= 3){
         zobrazVyhodnoceni();
-        return false;
     }
-    
-    document.querySelector('#poradi').textContent = otazkyKviz[indexOtazky].poradi;
+    else{
+        document.querySelector('#poradi').textContent = otazkyKviz[indexOtazky].poradi;
 
-    document.querySelector('#obrazek').src = otazkyKviz[indexOtazky].obrazek;
+        document.querySelector('#obrazek').src = otazkyKviz[indexOtazky].obrazek;
 
-    document.querySelector('#otazka').textContent = otazkyKviz[indexOtazky].otazka;
-    
-    let odpovedi = document.querySelector('#odpovedi');
-    
-    
-    for (let i = 0; i < 3; i++){
-        odpovedi.children[i].innerHTML = otazkyKviz[indexOtazky].odpovedi[i]
-    }  
+        document.querySelector('#otazka').textContent = otazkyKviz[indexOtazky].otazka;
+        
+        let odpovedi = document.querySelector('#odpovedi');
+        
+        
+        for (let i = 0; i < 3; i++){
+            odpovedi.children[i].innerHTML = otazkyKviz[indexOtazky].odpovedi[i]
+        }  
+    }
 }
 
 function klikNaOdpoved(indexOdpovedi) {
@@ -61,4 +62,27 @@ function klikNaOdpoved(indexOdpovedi) {
 function zobrazVyhodnoceni (){
     document.querySelector('.kviz').style.display = 'none';
     document.querySelector('.vyhodnoceni').style.display = 'block';
+}
+
+function zpracovaniOdpovedi(){
+    let vysledek = document.querySelector('#hodnoceni');
+
+    for(let i = 0; i < zaznamyOdpovedi.length; i++){
+        let h3 = document.createElement('h3');
+        let tvojeOdpoved = document.createElement('p');
+        let spravnaOdpoved = document.createElement ('p');
+
+       h3.textContent = otazkyKviz[i].otazka;
+       tvojeOdpoved.textContent = 'Tvoje odpověď: ' + otazkyKviz[i].odpovedi[zaznamyOdpovedi[i]];
+
+       if (zaznamyOdpovedi === spravnaOdpoved){
+           spravnaOdpoved.textContent = 'To je: SPRÁVNĚ'
+       }else{
+           spravnaOdpoved.textContent = 'To je: ŠPATNĚ'
+       }
+
+       vysledek.appendChild(h3);
+       vysledek.appendChild(tvojeOdpoved);
+       vysledek.appendChild(spravnaOdpoved);
+    }
 }
