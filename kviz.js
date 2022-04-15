@@ -96,6 +96,5 @@ function zpracovaniOdpovedi(){
     celkoveVyhodnoceni.textContent = 'Správně ' + spravnyPocetOdpovedi + ' ze 3 otázek. Úspěšnost ' + Math.floor((spravnyPocetOdpovedi/3) * 100) + '%.';
 
     hodnoceni.appendChild(celkoveVyhodnoceni);
-
 }
 
