@@ -25,7 +25,7 @@ const otazkyKviz = [
 
 let indexOtazky = 0;
 let zaznamyOdpovedi = [];
-let spravnaOdpoved = [1, 1, 1];
+let spravneOdpovedi = [1, 1, 1];
 
 zobrazKviz(indexOtazky);
 
@@ -52,22 +52,24 @@ function zobrazKviz(indexOtazky) {
 
 function klikNaOdpoved(indexOdpovedi) {
     indexOtazky++;
-    zobrazKviz(indexOtazky);
-
+    console.log('klik na odpoved po :'+ indexOtazky )
     zaznamyOdpovedi.push(indexOdpovedi);
-    console.log(indexOdpovedi)
-    
+
+    zobrazKviz(indexOtazky);
 }
 
 function zobrazVyhodnoceni (){
     document.querySelector('.kviz').style.display = 'none';
-    document.querySelector('.vyhodnoceni').style.display = 'block';
+    document.querySelector('.vysledek').style.display = 'block';
+    zpracovaniOdpovedi();
 }
 
 function zpracovaniOdpovedi(){
     let vysledek = document.querySelector('#hodnoceni');
 
     for(let i = 0; i < zaznamyOdpovedi.length; i++){
+
+        console.log('průchod zpracování' + i);
         let h3 = document.createElement('h3');
         let tvojeOdpoved = document.createElement('p');
         let spravnaOdpoved = document.createElement ('p');
@@ -75,7 +77,7 @@ function zpracovaniOdpovedi(){
        h3.textContent = otazkyKviz[i].otazka;
        tvojeOdpoved.textContent = 'Tvoje odpověď: ' + otazkyKviz[i].odpovedi[zaznamyOdpovedi[i]];
 
-       if (zaznamyOdpovedi === spravnaOdpoved){
+       if (zaznamyOdpovedi[i] === spravneOdpovedi[i]){
            spravnaOdpoved.textContent = 'To je: SPRÁVNĚ'
        }else{
            spravnaOdpoved.textContent = 'To je: ŠPATNĚ'
