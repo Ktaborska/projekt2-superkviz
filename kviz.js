@@ -1,3 +1,4 @@
+//vytvoření pole objektů s otázkami
 const otazkyKviz = [
     {
         obrazek:'obrazky/moncicak.jpg',
@@ -21,12 +22,15 @@ const otazkyKviz = [
         }
 ];
 
+//globální proměnné
 let indexOtazky = 0;
 let zaznamyOdpovedi = [];
 let spravneOdpovedi = [1, 1, 1];
 
+//zavolání funkce, která zobrazí úvodní otázku
 zobrazKviz(indexOtazky);
 
+//funkce pro zobrazení otázek s podmínkou, kdy se má zavolat funkce pro zobrazení výsledků
 function zobrazKviz(indexOtazky) {
     if(indexOtazky >= 3){
         zobrazVyhodnoceni();
@@ -47,18 +51,21 @@ function zobrazKviz(indexOtazky) {
     }
 }
 
+//fukce která se zavolá po kliknutí na odpověď
 function klikNaOdpoved(indexOdpovedi) {
     indexOtazky++;
     zaznamyOdpovedi.push(indexOdpovedi);
     zobrazKviz(indexOtazky);
 }
 
+//funkce pro zobrazení vyhodnocení a skrytí otázek
 function zobrazVyhodnoceni (){
     document.querySelector('.kviz').style.display = 'none';
     document.querySelector('.vysledek').style.display = 'block';
     zpracovaniOdpovedi();
 }
 
+//funkce pro zpracování odpovědí 
 function zpracovaniOdpovedi(){
     let hodnoceni = document.querySelector('#tvoje-hodnoceni');
     let spravnyPocetOdpovedi = 0;
