@@ -1,5 +1,3 @@
-// Nejdříve si vytvoř objekt, který bude držet tvoje super otázky 
-
 const otazkyKviz = [
     {
         obrazek:'obrazky/moncicak.jpg',
@@ -30,7 +28,6 @@ let spravneOdpovedi = [1, 1, 1];
 zobrazKviz(indexOtazky);
 
 function zobrazKviz(indexOtazky) {
-
     if(indexOtazky >= 3){
         zobrazVyhodnoceni();
     }
@@ -52,9 +49,7 @@ function zobrazKviz(indexOtazky) {
 
 function klikNaOdpoved(indexOdpovedi) {
     indexOtazky++;
-    console.log('klik na odpoved po :'+ indexOtazky )
     zaznamyOdpovedi.push(indexOdpovedi);
-
     zobrazKviz(indexOtazky);
 }
 
@@ -65,7 +60,8 @@ function zobrazVyhodnoceni (){
 }
 
 function zpracovaniOdpovedi(){
-    let vysledek = document.querySelector('#hodnoceni');
+    let hodnoceni = document.querySelector('#tvoje-hodnoceni');
+    let spravnyPocetOdpovedi = 0;
 
     for(let i = 0; i < zaznamyOdpovedi.length; i++){
 
@@ -78,13 +74,21 @@ function zpracovaniOdpovedi(){
        tvojeOdpoved.textContent = 'Tvoje odpověď: ' + otazkyKviz[i].odpovedi[zaznamyOdpovedi[i]];
 
        if (zaznamyOdpovedi[i] === spravneOdpovedi[i]){
+            spravnyPocetOdpovedi++;
            spravnaOdpoved.textContent = 'To je: SPRÁVNĚ'
        }else{
            spravnaOdpoved.textContent = 'To je: ŠPATNĚ'
        }
 
-       vysledek.appendChild(h3);
-       vysledek.appendChild(tvojeOdpoved);
-       vysledek.appendChild(spravnaOdpoved);
+       hodnoceni.appendChild(h3);
+       hodnoceni.appendChild(tvojeOdpoved);
+       hodnoceni.appendChild(spravnaOdpoved);
     }
+
+    let celkoveVyhodnoceni = document.createElement('h2');
+    celkoveVyhodnoceni.textContent = 'Správně ' + spravnyPocetOdpovedi + ' ze 3 otázek. Úspěšnost ' + Math.floor((spravnyPocetOdpovedi/3) * 100) + '%.';
+
+    hodnoceni.appendChild(celkoveVyhodnoceni);
+
 }
+
